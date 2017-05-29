@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Blog de Rafael</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/mail.png') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<!-- Barra Principal --> 
+ <nav>
+    <div class="nav-wrapper black">
+      <a href="{{ url_for('index') }}" class="brand-logo" id="PagPrincipal">El Blog de Rafael</a>
+      	<ul id="nav-mobile" class="right hide-on-med-and-down">
+         {% if session['user'] %}
+         {% else %}
+       	 	<li><a href="{{ url_for('login') }}" id="inicio">Iniciar Sesión</a></li>
+        	<li><a href="{{ url_for('signin') }}" id="reg">Registrarse</a></li>
+         {% endif %}
+        	<li>
+          	<a class='dropdown-button' href='#' data-activates='dropdown1' data-beloworigin="true">Más</a>
+            <ul id='dropdown1' class='dropdown-content'>
+           	  <li><a href="#" id="NPost">Nuevo Post</a></li>
+              <li><a href="#" id="MMsj">Modificar Mensaje</a></li>
+            </ul>
+        	</li>
+      	</ul>
+        <form id="busc" class="right hide-on-med-and-down">
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        </form>
+    </div>
+  </nav>
+<!--Contenido Principal-->
+<main> 
+{% block content %}	{% endblock %}
+</main>
+
+<footer class="page-footer black">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+  <div class="container">
+    © 2017 El Blog de Rafael. Todos los Derechos Reservados.
+    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+  </div>
+ </div>
+</footer>
+
+<script type="text/javascript" src="{{ url_for('static' , filename='js/jquery-2.2.4.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static' , filename='js/materialize.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static' , filename='js/misScripts.js') }}"></script>
+
+</body>
+</html>
